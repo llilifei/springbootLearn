@@ -40,7 +40,7 @@ public class StudentsService {
     public int updateStu(){
         Students students = new Students();
         students.setSid(3);
-        students.setSname("傻狗");
+        students.setSname("王二小");
         return studentsDao.updateStudent(students);
     }
 
