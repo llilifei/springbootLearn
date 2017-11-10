@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.feifei.mybatis.DAO.StudentsDao">
+
+    <!-- 所有列 -->
+    <sql id="Column_list">
+        sid,
+        sname,
+        sage
+    </sql>
+
+    <resultMap id="ListTest" type="Students" >
+        <id  column="sid" property="sid" />
+        <result column="sname" property="sname" />
+        <result column="sage" property="sage" />
+    </resultMap>
+
+    <!-- 根据ID查询数据 -->
+    <select id="get" parameterType="int" resultMap="ListTest">
+        SELECT
+        <include refid="Column_list" />
+        FROM students
+        WHERE sid = #{sid}
+    </select>
+    <!-- 根据名字查询-->
+    <select id="selectByname" parameterType="Students" resultMap="ListTest">
+        SELECT
+        <include refid="Column_list" />
+        FROM students
+        WHERE sname=#{sname}
+    </select>
+    <!--查询所有数据-->
+    <select id="selectAll" parameterType="Students" resultMap="ListTest">
+        SELECT
+        <include refid="Column_list" />
+        FROM students
+    </select>
+    <!--增加数据-->
+    <insert id="insertStudent" parameterType="Students">
+        INSERT INTO students(sname,sage)
+        VALUES (#{sname},#{sage})
+    </insert>
+
+    <!-- 删除数据-->
+    <delete id="deleteStudent" parameterType="Students">
+        DELETE FROM students
+        WHERE sid=#{sid}
+    </delete>
+    <update id="updateStudent" parameterType="Students">
+        UPDATE students
+        SET sname=#{sname}
+        WHERE sid=#{sid}
+    </update>
+</mapper>
