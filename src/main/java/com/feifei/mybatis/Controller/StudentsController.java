@@ -5,6 +5,7 @@ import com.feifei.mybatis.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -29,6 +30,7 @@ public class StudentsController {
     public Object selectByname(String sname){
         return studentsService.selectByname(sname);
     }
+    @ResponseBody
     @RequestMapping(value = "/insertstu",method = RequestMethod.GET)
     public int insertStudent(Students students){
            return studentsService.insetstu();
@@ -38,7 +40,6 @@ public class StudentsController {
     public int deleteStudent(int sid){
        return studentsService.deleteStu(sid);
     }
-
     @RequestMapping("/updatestu")
     public int updateStudent(){
         return studentsService.updateStu();
