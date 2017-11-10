@@ -1,2 +1,2 @@
 # springbootLearn
-自己练手的一个springboot项目，整合了mybatis，顺便练习如何上传到gitub
+自己练手的一个springboot项目，整合了mybatis，顺便练习如何上传到github
